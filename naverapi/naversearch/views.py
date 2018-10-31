@@ -1,13 +1,10 @@
-# -*- coding: utf-8 -*-
-# -*- coding: euc-kr -*-
+from django.shortcuts import render
 
-import os
-import sys
-import urllib.request
-
+# Create your views here.
 def naverBookSearchApi():
-	client_id = "YOUR_CLIENT_ID"
-	client_secret = "YOUR_CLIENT_SECRET"
+	#해당 id secretkey는 git에 넣지않음
+	client_id = ""
+	client_secret = ""
 	encText = urllib.parse.quote("검색할 단어")
 	url = "https://openapi.naver.com/v1/search/blog?query=" + encText # json 결과
 	# url = "https://openapi.naver.com/v1/search/blog.xml?query=" + encText # xml 결과

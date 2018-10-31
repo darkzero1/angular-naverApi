@@ -5,6 +5,8 @@
 </head>
 
 <body>
+  <input type="text" name="일단 보류" placeholder="검색할 단어"/>
+
   <div class="ui link cards" np-app="BookApiApp" np-controller="BookApiSearch">
     <div np-repeat="item in items" class="card">
       <div id="{item.isbn}" class="image">
