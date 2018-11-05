@@ -11,7 +11,6 @@ def naverBookSearchApi(request):
 
 	#해당 id secretkey는 git에 넣지않음
 	client_id = getattr(settings, 'CLIENT_ID')
-	print(client_id)
 	client_secret = getattr(settings, 'CLIENT_SECRET')
 	encText = urllib.parse.quote(request.POST['search_name'])
 	url = "https://openapi.naver.com/v1/search/book.json?query="+encText+"&display=10&start=1"

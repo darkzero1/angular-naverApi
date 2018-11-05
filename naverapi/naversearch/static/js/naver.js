@@ -7,7 +7,7 @@ BookApiApp.controller('BookApiSearch', ['$scope', '$http', function ($scope, $ht
       var jsonData = {"search_name" : $scope.search_name}
       $http({
             method : "POST",
-            url : "/naverapi/",
+            url : "/naversearch/",
             headers :{'X-CSRFToken' : document.getElementsByName('csrfmiddlewaretoken')[0].value,
             'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'},
             data : $.param(jsonData)
