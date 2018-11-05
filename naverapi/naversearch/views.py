@@ -3,13 +3,16 @@ import json
 import urllib.request
 from django.http import HttpResponseRedirect, Http404,JsonResponse
 from django.views.decorators.csrf import csrf_protect
+from django.conf import settings
 
 # Create your views here.
 @csrf_protect
 def naverBookSearchApi(request):
+
 	#해당 id secretkey는 git에 넣지않음
-	client_id = "sqj46vL3xz4UmCdh5cn3"
-	client_secret = "uG9d8QswBN"
+	client_id = getattr(settings, 'CLIENT_ID')
+	print(client_id)
+	client_secret = getattr(settings, 'CLIENT_SECRET')
 	encText = urllib.parse.quote(request.POST['search_name'])
 	url = "https://openapi.naver.com/v1/search/book.json?query="+encText+"&display=10&start=1"
 	# url = "https://openapi.naver.com/v1/search/blog.xml?query=" + encText # xml 결과
