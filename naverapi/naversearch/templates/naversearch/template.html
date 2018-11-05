@@ -1,0 +1,52 @@
+{% load staticfiles %}
+<html>
+
+<head>
+  <title>네이버 책 API 사용 Toy</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'semantic/semantic.min.css' %}">
+  <script
+  src="https://code.jquery.com/jquery-2.2.4.js"
+  integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+  crossorigin="anonymous"></script>
+  <script src="{% static 'node_modules/angular/angular.js' %}" type="text/javascript"></script>
+  <script src="{% static 'js/naver.js' %}" type="text/javascript"></script>
+  <script src="{% static 'semantic/semantic.min.js' %}" type="text/javascript"></script>
+
+</head>
+<body ng-app="BookApiApp" ng-controller="BookApiSearch" >
+
+{% verbatim %}
+
+  <input type="text" ng-model='search_name' placeholder="검색할 단어"/>
+  <button ng-click = "searchBook()"class="ui primary button">검색</button>
+  <div class="ui link cards" >
+    <div ng-repeat="item in items" class="card">
+      <div id="{{item.isbn}}" class="image">
+        <img src="{{item.image}}">
+      </div>
+      <div class="content">
+        <div class="header" ng-bind-html="item.title | changeHtml">{{item.title}}</div>
+        <div class="meta">
+          <a>{{item.author}}</a>
+        </div>
+        <div ng-bind-html="item.description  | changeHtml" class="description">
+          {{item.description}}
+        </div>
+      </div>
+      <div class="extra content">
+        <span class="right floated">
+           <span>{{item.price}}{{item.discount}}</span>
+         </span>
+        <span>
+           <i class="user icon"></i>
+           {{item.publisher}}{{item.pubdate}}
+         </span>
+      </div>
+    </div>
+  </div>
+  {% endverbatim %}
+  {%csrf_token%}
+</body>
+
+
+</html>
